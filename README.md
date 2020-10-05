@@ -4,9 +4,12 @@ Docker and Singularity containers to perform Polygenic Risk Score (PRS) via PRSi
 
 ## Getting Started
 
-In order to run developed Docker and Singularity containers you need to install Docker (https://docs.docker.com/get-docker/) and Singularity (https://sylabs.io/guides/3.6/user-guide/quick_start.html?highlight=install),  respectively 
+In order to run developed Docker and Singularity containers you need to install Docker (https://docs.docker.com/get-docker/) and Singularity (https://sylabs.io/guides/3.6/user-guide/quick_start.html?highlight=install),  respectively.
 
-## for Docker Container
+Note that you can try different analysis other than the one  presented here as introductive example. For more detailed information related to Prsice-2 analysis, please have a look for [1]  (https://www.prsice.info/quick_start/) and [2] (https://www.intro-statistical-genetics.com/data-code ) (ch. 10). Keep in mind that, here  we are using "PRSice_linux" instead of "PRSice" hence you may need to change this command if you want to use examples in these references.  
+ 
+
+## For Docker Container
 
 1. Pull the docker container from Docker Hub
 
@@ -137,7 +140,48 @@ docker run   -v  /Users/bayramakdeniz/GoogleDrive/COMORMENT/bookMelinda:/INPUT b
 ```
  
 
-You can try different analysis as well. For more detail information related to Prsice-2 analysis, please have a look for [1]  (https://www.prsice.info/quick_start/) and [2] (https://www.intro-statistical-genetics.com/data-code ) (ch. 10). Keep in mind that, here  we are using "PRSice_linux" instead of "PRSice" hence you may need to change this command if required.  
+
+
+## For Singularity Container
+
+1- Build Singularity image from Docker Hub
+
+ ```
+singularity build imagename.sif docker://bayramalex/imageprsice:latest
+
+```
+
+Alternatively you can build it as  'sandbox' to use it in passive mode
+
+ ```
+singularity build --sandbox imagename/  docker://bayramalex/imageprsice:latest
+
+```
+
+Here  a container folder called imagename is created in the working directory. You can cd to this folder and work as if you  are working in the passive mode in Docker.
+
+
+2- Go to the directory where your data is: cd ~/your/local/path
+
+Copy PRSice.R script to this directory.
+
+Run the container by mounting this directory
+
+ ```
+singularity exec -B  $(pwd):/INPUT /path/of/the/container/imagename.sif  <opts>
+
+```
+
+For Example
+
+ ```
+
+singularity exec -B  $(pwd):/INPUT /home/bayram/mycontainers/imagename.sif Rscript PRSice.R --dir .     --prsice /PRSice_linux     --base BMI.txt     --target 1kg_hm3_qc     --snp MarkerName     --A1 A1     --A2 A2     --stat Beta     --pvalue Pval     --pheno-file BMI_pheno.txt     --bar-levels 1     --fastscore     --binary-target F  --extract BMI_score_all.valid     --out BMI_score_all
+
+
+```
+
+Warning: A slight difference in Singularity container is: you need to run as  /PRSice_linux instead of  ./PRSice_linux
 
 
 ## References
