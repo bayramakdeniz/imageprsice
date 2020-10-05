@@ -45,7 +45,7 @@ Example:
     --binary-target F \
     --out BMI_score_all
     
-    ```
+ ```
 
 
 ### Interactive mode
@@ -77,7 +77,7 @@ Example:
     --binary-target F \
     --out BMI_score_all
     
-    ```
+```
 
 
 ### Mounting your data to container
@@ -153,7 +153,7 @@ singularity build imagename.sif docker://bayramalex/imageprsice:latest
 
 Alternatively you can build it as  'sandbox' to use it in passive mode
 
- ```
+```
 singularity build --sandbox imagename/  docker://bayramalex/imageprsice:latest
 
 ```
@@ -167,17 +167,16 @@ Copy PRSice.R script to this directory.
 
 Run the container by mounting this directory
 
- ```
+```
 singularity exec -B  $(pwd):/INPUT /path/of/the/container/imagename.sif  <opts>
 
 ```
 
 For Example
 
- ```
+```
 
 singularity exec -B  $(pwd):/INPUT /home/bayram/mycontainers/imagename.sif Rscript PRSice.R --dir .     --prsice /PRSice_linux     --base BMI.txt     --target 1kg_hm3_qc     --snp MarkerName     --A1 A1     --A2 A2     --stat Beta     --pvalue Pval     --pheno-file BMI_pheno.txt     --bar-levels 1     --fastscore     --binary-target F  --extract BMI_score_all.valid     --out BMI_score_all
-
 
 ```
 
