@@ -121,7 +121,7 @@ Rscript PRSice.R --dir . \
  It is also possible to run it with passive mode as:
  
  ```
-docker run   -v  /Users/bayramakdeniz/GoogleDrive/COMORMENT/bookMelinda:/INPUT bayramalex/imageprsice  Rscript PRSice.R --dir . \
+docker run   -v  /your/local/path:/INPUT bayramalex/imageprsice  Rscript PRSice.R --dir . \
     --prsice ./PRSice_linux \
     --base INPUT/BMI.txt \
     --target INPUT/1kg_hm3_qc \
@@ -175,7 +175,7 @@ singularity exec -B  $(pwd):/INPUT /path/of/the/container/imagename.sif  <your P
 For Example
 
 ```
-singularity exec -B  $(pwd):/INPUT /home/bayram/GRSworkflow/imageprsice.sif Rscript PRSice.R --dir . \
+singularity exec -B  $(pwd):/INPUT /home/bayram/PRS/imagename.sif Rscript PRSice.R --dir . \
     --prsice /PRSice_linux \
     --base BMI.txt \
     --target 1kg_hm3_qc \
