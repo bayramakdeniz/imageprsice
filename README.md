@@ -55,7 +55,7 @@ docker run  -it bayramalex/imageprsice
 
 ```
 
-Once you run the code, you have entered inside the container (indicated by '#' sign), then you can run any anaylsis without typing docker commands.
+Once you run the code, you have entered inside the container (indicated by '#' sign), then you can run any anaylsis without typing docker commands as:
 
 
 
@@ -81,7 +81,7 @@ Example:
 
 
 ### Mounting your data to container
-It is desired to do analysis with your own data. At this point it is required to mount  a path to container and do analysis on the data in this path. 
+It is desired to do analysis with your own data. At this point it is required to mount  a path to the container and do analysis on the data in this path. 
 
 ```
 docker run  -it -v  /your/local/path:/INPUT bayramalex/imageprsice 
@@ -168,19 +168,32 @@ Copy PRSice.R script to this directory.
 Run the container by mounting this directory
 
 ```
-singularity exec -B  $(pwd):/INPUT /path/of/the/container/imagename.sif  <opts>
+singularity exec -B  $(pwd):/INPUT /path/of/the/container/imagename.sif  <your PRSice2 analysis>
 
 ```
 
 For Example
 
 ```
-
-singularity exec -B  $(pwd):/INPUT /home/bayram/mycontainers/imagename.sif Rscript PRSice.R --dir .     --prsice /PRSice_linux     --base BMI.txt     --target 1kg_hm3_qc     --snp MarkerName     --A1 A1     --A2 A2     --stat Beta     --pvalue Pval     --pheno-file BMI_pheno.txt     --bar-levels 1     --fastscore     --binary-target F  --extract BMI_score_all.valid     --out BMI_score_all
+singularity exec -B  $(pwd):/INPUT /home/bayram/GRSworkflow/imageprsice.sif Rscript PRSice.R --dir . \
+    --prsice /PRSice_linux \
+    --base BMI.txt \
+    --target 1kg_hm3_qc \
+    --snp MarkerName \
+    --A1 A1 \
+    --A2 A2 \
+    --stat Beta \
+    --pvalue Pval \
+    --pheno-file BMI_pheno.txt \
+    --bar-levels 1 \
+    --fastscore \
+    --binary-target F \
+    --extract BMI_score_all.valid  \
+    --out BMI_score_all
 
 ```
 
-Warning: A slight difference in Singularity container is: you need to run as  /PRSice_linux instead of  ./PRSice_linux
+Warning: A slight difference in Singularity compared to Docker container is: you need to run as  /PRSice_linux instead of  ./PRSice_linux
 
 
 ## References
