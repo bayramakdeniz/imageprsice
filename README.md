@@ -1,10 +1,10 @@
-# Project Title
+# Docker and Singularity containers for Polygenic Risk Score analysis
 
-Docker and Singularity containers to perform Polygenic Risk Score (PRS) via PRSice2 (https://www.prsice.info/) .
+Docker and Singularity containers to perform Polygenic Risk Score (PRS) via PRSice-2 (https://www.prsice.info/) .
 
 ## Getting Started
 
-In order to run developed Docker and Singularity containers you need to install Docker (https://docs.docker.com/get-docker/) and Singularity (https://sylabs.io/guides/3.6/user-guide/quick_start.html?highlight=install),  respectively.
+In order to run the developed Docker and Singularity containers you need to install Docker (https://docs.docker.com/get-docker/) and Singularity (https://sylabs.io/guides/3.6/user-guide/quick_start.html?highlight=install),  respectively. You can run each container separately.
 
 Note that you can try different analysis other than the one  presented here as introductive example. For more detailed information related to Prsice-2 analysis, please have a look for [1]  (https://www.prsice.info/quick_start/) and [2] (https://www.intro-statistical-genetics.com/data-code ) (ch. 10). Keep in mind that, here  we are using "PRSice_linux" instead of "PRSice" hence you may need to change this command if you want to use examples in these references.  
  
